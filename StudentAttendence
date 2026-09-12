@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Attendance {
+    ArrayList<String> students = new ArrayList<>();
+
+    void addStudent(String name) {
+        students.add(name);
+        System.out.println("Student added successfully.");
+    }
+
+    void displayStudents() {
+        System.out.println("Students Present:");
+        for (String name : students) {
+            System.out.println(name);
+        }
+    }
+
+    void searchStudent(String name) {
+        if (students.contains(name))
+            System.out.println(name + " is present.");
+        else
+            System.out.println(name + " is not present.");
+    }
+
+    void removeStudent(String name) {
+        if (students.remove(name))
+            System.out.println(name + " removed successfully.");
+        else
+            System.out.println(name + " not found.");
+    }
+
+    void countStudents() {
+        System.out.println("Number of students present: " + students.size());
+    }
+}
+
+public class StudentAttendence {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Attendance a = new Attendance();
+
+        a.addStudent("Rahul");
+        a.addStudent("Anurag");
+        a.addStudent("Priya");
+
+        a.displayStudents();
+
+        a.searchStudent("Anurag");
+
+        a.removeStudent("Rahul");
+
+        a.countStudents();
+
+        sc.close();
+    }
+}
