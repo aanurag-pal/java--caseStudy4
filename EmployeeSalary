@@ -1,0 +1,78 @@
+```java
+import java.util.ArrayList;
+
+public class EmployeeSalary {
+
+    ArrayList<Integer> salaries = new ArrayList<>();
+
+    // Method to add salary
+    void addSalary(int salary) {
+        salaries.add(salary);
+        System.out.println(salary + " added.");
+    }
+
+    // Method to display all salaries
+    void displaySalaries() {
+        System.out.println("Employee Salaries:");
+
+        for (int salary : salaries) {
+            System.out.println(salary);
+        }
+    }
+
+    // Method to find highest salary
+    void highestSalary() {
+        int highest = salaries.get(0);
+
+        for (int salary : salaries) {
+            if (salary > highest) {
+                highest = salary;
+            }
+        }
+
+        System.out.println("Highest Salary: " + highest);
+    }
+
+    // Method to calculate total salary
+    void totalSalary() {
+        int total = 0;
+
+        for (int salary : salaries) {
+            total = total + salary;
+        }
+
+        System.out.println("Total Salary: " + total);
+    }
+
+    // Method to calculate average salary
+    void averageSalary() {
+        int total = 0;
+
+        for (int salary : salaries) {
+            total = total + salary;
+        }
+
+        double average = (double) total / salaries.size();
+
+        System.out.println("Average Salary: " + average);
+    }
+
+    public static void main(String[] args) {
+
+        EmployeeSalary obj = new EmployeeSalary();
+
+        obj.addSalary(30000);
+        obj.addSalary(45000);
+        obj.addSalary(25000);
+        obj.addSalary(60000);
+
+        obj.displaySalaries();
+
+        obj.highestSalary();
+
+        obj.totalSalary();
+
+        obj.averageSalary();
+    }
+}
+```
