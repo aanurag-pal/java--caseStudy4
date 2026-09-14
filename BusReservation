@@ -1,0 +1,74 @@
+```java
+import java.util.Vector;
+
+public class BusReservation {
+
+    Vector<Integer> ages = new Vector<>();
+
+    // Method to add passenger age
+    void addAge(int age) {
+        ages.add(age);
+    }
+
+    // Method to display passenger ages
+    void displayAges() {
+        System.out.println("Passenger Ages:");
+
+        for (int age : ages) {
+            System.out.println(age);
+        }
+    }
+
+    // Method to calculate fare
+    double calculateFare(int age) {
+
+        double fare = 500;
+
+        if (age < 5) {
+            fare = 0;
+        }
+        else if (age <= 12) {
+            fare = 500 * 0.50;
+        }
+        else if (age <= 59) {
+            fare = 500;
+        }
+        else {
+            fare = 500 * 0.70;
+        }
+
+        return fare;
+    }
+
+    // Method to calculate fare for every passenger
+    void displayFare() {
+
+        System.out.println("\nAge\tFare");
+
+        for (int age : ages) {
+
+            double fare = calculateFare(age);
+
+            System.out.println(age + "\t₹" + fare);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        BusReservation obj = new BusReservation();
+
+        // Adding passenger ages
+        obj.addAge(3);
+        obj.addAge(8);
+        obj.addAge(25);
+        obj.addAge(65);
+        obj.addAge(12);
+
+        // Display ages
+        obj.displayAges();
+
+        // Calculate and display fares
+        obj.displayFare();
+    }
+}
+```
