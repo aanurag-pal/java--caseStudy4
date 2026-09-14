@@ -1,0 +1,62 @@
+```java
+import java.util.Stack;
+
+public class ATM {
+
+    Stack<Integer> transactions = new Stack<>();
+    int balance = 20000;
+
+    // Method to withdraw money
+    void withdraw(int amount) {
+
+        if (amount <= balance) {
+            balance = balance - amount;
+            transactions.push(amount);
+
+            System.out.println("Withdrawal successful: ₹" + amount);
+            System.out.println("Remaining balance: ₹" + balance);
+        }
+        else {
+            System.out.println("Withdrawal failed: Insufficient balance for ₹" + amount);
+        }
+    }
+
+    // Method to display transactions
+    void displayTransactions() {
+
+        System.out.println("\nSuccessful Transactions:");
+
+        for (int amount : transactions) {
+            System.out.println("₹" + amount);
+        }
+    }
+
+    // Method to show latest transaction using peek()
+    void latestTransaction() {
+
+        if (!transactions.empty()) {
+            System.out.println("\nLatest Transaction: ₹" + transactions.peek());
+        }
+        else {
+            System.out.println("No transactions available.");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        ATM obj = new ATM();
+
+        // Withdrawal transactions
+        obj.withdraw(5000);
+        obj.withdraw(3000);
+        obj.withdraw(8000);
+        obj.withdraw(6000);
+
+        // Display successful transactions
+        obj.displayTransactions();
+
+        // Display latest transaction
+        obj.latestTransaction();
+    }
+}
+```
