@@ -1,0 +1,81 @@
+```java
+import java.util.ArrayList;
+
+public class ShoppingDiscount {
+
+    ArrayList<Integer> prices = new ArrayList<>();
+
+    // Method to add product price
+    void addPrice(int price) {
+        prices.add(price);
+    }
+
+    // Method to display prices
+    void displayPrices() {
+        System.out.println("Product Prices:");
+
+        for (int price : prices) {
+            System.out.println(price);
+        }
+    }
+
+    // Method to calculate total
+    int calculateTotal() {
+        int total = 0;
+
+        for (int price : prices) {
+            total = total + price;
+        }
+
+        return total;
+    }
+
+    // Method to calculate discount
+    double calculateDiscount() {
+        int total = calculateTotal();
+        double discount;
+
+        if (total >= 10000) {
+            discount = total * 0.20;
+        }
+        else if (total >= 5000) {
+            discount = total * 0.10;
+        }
+        else if (total >= 2000) {
+            discount = total * 0.05;
+        }
+        else {
+            discount = 0;
+        }
+
+        return discount;
+    }
+
+    // Method to calculate final amount
+    double finalAmount() {
+        int total = calculateTotal();
+        double discount = calculateDiscount();
+
+        return total - discount;
+    }
+
+    public static void main(String[] args) {
+
+        ShoppingDiscount obj = new ShoppingDiscount();
+
+        // Adding product prices
+        obj.addPrice(3000);
+        obj.addPrice(2500);
+        obj.addPrice(4000);
+        obj.addPrice(1500);
+
+        obj.displayPrices();
+
+        System.out.println("Total Amount: ₹" + obj.calculateTotal());
+
+        System.out.println("Discount: ₹" + obj.calculateDiscount());
+
+        System.out.println("Final Payable Amount: ₹" + obj.finalAmount());
+    }
+}
+```
