@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+
+public class EmployeeBonus {
+
+    ArrayList<Integer> salaries = new ArrayList<>();
+
+    // Method to add salary
+    void addSalary(int salary) {
+        salaries.add(salary);
+    }
+
+    // Method to display salaries
+    void displaySalaries() {
+        System.out.println("Employee Salaries:");
+        for (int salary : salaries) {
+            System.out.println(salary);
+        }
+    }
+
+    // Method to calculate bonus and revised salary
+    void calculateBonus() {
+        System.out.println("\nSalary\tBonus\tRevised Salary");
+
+        for (int salary : salaries) {
+            double bonus = 0;
+
+            if (salary >= 80000) {
+                bonus = salary * 0.15;
+            } else if (salary >= 50000) {
+                bonus = salary * 0.10;
+            } else if (salary >= 30000) {
+                bonus = salary * 0.05;
+            } else {
+                bonus = 0;
+            }
+
+            double revisedSalary = salary + bonus;
+
+            System.out.println(salary + "\t" + bonus + "\t" + revisedSalary);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        EmployeeBonus obj = new EmployeeBonus();
+
+        // Add employee salaries
+        obj.addSalary(25000);
+        obj.addSalary(35000);
+        obj.addSalary(60000);
+        obj.addSalary(90000);
+
+        obj.displaySalaries();
+        obj.calculateBonus();
+    }
+}
