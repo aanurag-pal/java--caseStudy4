@@ -1,0 +1,78 @@
+```java
+import java.util.Vector;
+
+public class ElectricityBill {
+
+    Vector<Integer> units = new Vector<>();
+
+    // Method to add units
+    void addUnits(int unit) {
+        units.add(unit);
+    }
+
+    // Method to display units
+    void displayUnits() {
+        System.out.println("Electricity Consumption:");
+
+        for (int unit : units) {
+            System.out.println(unit + " units");
+        }
+    }
+
+    // Method to calculate bill
+    double calculateBill(int unit) {
+
+        double bill = 0;
+
+        if (unit <= 100) {
+            bill = unit * 2;
+        }
+        else if (unit <= 200) {
+            bill = (100 * 2) + ((unit - 100) * 3);
+        }
+        else {
+            bill = (100 * 2) + (100 * 3) + ((unit - 200) * 5);
+        }
+
+        return bill;
+    }
+
+    // Method to calculate final bill with surcharge
+    void calculateFinalBill() {
+
+        System.out.println("\nUnits\tBill\tSurcharge\tFinal Bill");
+
+        for (int unit : units) {
+
+            double bill = calculateBill(unit);
+            double surcharge = 0;
+
+            if (bill > 1000) {
+                surcharge = bill * 0.10;
+            }
+
+            double finalBill = bill + surcharge;
+
+            System.out.println(
+                unit + "\t₹" + bill +
+                "\t₹" + surcharge +
+                "\t\t₹" + finalBill
+            );
+        }
+    }
+
+    public static void main(String[] args) {
+
+        ElectricityBill obj = new ElectricityBill();
+
+        obj.addUnits(80);
+        obj.addUnits(150);
+        obj.addUnits(250);
+        obj.addUnits(300);
+
+        obj.displayUnits();
+
+        obj.calculateFinalBill();
+    }
+}
+```
