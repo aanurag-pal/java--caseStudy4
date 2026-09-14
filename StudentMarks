@@ -1,0 +1,83 @@
+```java
+import java.util.ArrayList;
+
+public class StudentMarks {
+
+    ArrayList<Integer> marks = new ArrayList<>();
+
+    // Method to add marks
+    void addMarks(int mark) {
+        marks.add(mark);
+    }
+
+    // Method to display marks
+    void displayMarks() {
+        System.out.println("Student Marks:");
+
+        for (int mark : marks) {
+            System.out.println(mark);
+        }
+    }
+
+    // Method to calculate total marks
+    int calculateTotal() {
+        int total = 0;
+
+        for (int mark : marks) {
+            total = total + mark;
+        }
+
+        return total;
+    }
+
+    // Method to calculate percentage
+    double calculatePercentage() {
+        int total = calculateTotal();
+
+        double percentage = (total / 500.0) * 100;
+
+        return percentage;
+    }
+
+    // Method to calculate grade
+    void calculateGrade() {
+        double percentage = calculatePercentage();
+
+        if (percentage >= 90) {
+            System.out.println("Grade: A");
+        }
+        else if (percentage >= 75) {
+            System.out.println("Grade: B");
+        }
+        else if (percentage >= 60) {
+            System.out.println("Grade: C");
+        }
+        else if (percentage >= 50) {
+            System.out.println("Grade: D");
+        }
+        else {
+            System.out.println("Fail");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        StudentMarks obj = new StudentMarks();
+
+        // Adding marks for 5 subjects
+        obj.addMarks(85);
+        obj.addMarks(90);
+        obj.addMarks(78);
+        obj.addMarks(88);
+        obj.addMarks(92);
+
+        obj.displayMarks();
+
+        System.out.println("Total Marks: " + obj.calculateTotal());
+
+        System.out.println("Percentage: " + obj.calculatePercentage());
+
+        obj.calculateGrade();
+    }
+}
+```
