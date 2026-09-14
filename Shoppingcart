@@ -1,0 +1,58 @@
+```java
+import java.util.ArrayList;
+
+public class ShoppingCart {
+
+    ArrayList<String> products = new ArrayList<>();
+
+    
+    void addProduct(String product) {
+        products.add(product);
+        System.out.println(product + " added to cart.");
+    }
+
+    
+    void removeProduct(String product) {
+        if (products.remove(product)) {
+            System.out.println(product + " removed from cart.");
+        } else {
+            System.out.println(product + " not found in cart.");
+        }
+    }
+
+  
+    void checkProduct(String product) {
+        if (products.contains(product)) {
+            System.out.println(product + " is in the cart.");
+        } else {
+            System.out.println(product + " is not in the cart.");
+        }
+    }
+
+    
+    void displayProducts() {
+        System.out.println("Products in cart:");
+
+        for (String product : products) {
+            System.out.println(product);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        ShoppingCart obj = new ShoppingCart();
+
+        obj.addProduct("Laptop");
+        obj.addProduct("Mobile");
+        obj.addProduct("Headphones");
+
+        obj.displayProducts();
+
+        obj.checkProduct("Mobile");
+
+        obj.removeProduct("Headphones");
+
+        obj.displayProducts();
+    }
+}
+```
