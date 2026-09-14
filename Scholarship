@@ -1,0 +1,118 @@
+```java
+import java.util.Stack;
+
+public class Scholarship {
+
+    Stack<Double> students = new Stack<>();
+
+    // Method to add student percentage
+    void addStudent(double percentage) {
+        students.push(percentage);
+        System.out.println("Student with " + percentage + "% added.");
+    }
+
+    // Method to calculate scholarship
+    int calculateScholarship(double percentage) {
+
+        if (percentage >= 90) {
+            return 20000;
+        }
+        else if (percentage >= 80) {
+            return 15000;
+        }
+        else if (percentage >= 70) {
+            return 10000;
+        }
+        else if (percentage >= 60) {
+            return 5000;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    // Method to process students using LIFO
+    void processStudents() {
+
+        System.out.println("\nProcessing Students (LIFO):");
+
+        while (!students.empty()) {
+
+            double percentage = students.pop();
+
+            int scholarship = calculateScholarship(percentage);
+
+            System.out.println(
+                "Percentage: " + percentage +
+                "%  Scholarship: ₹" + scholarship
+            );
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scholarship obj = new Scholarship();
+
+        // Adding students
+        obj.addStudent(75);
+        obj.addStudent(92);
+        obj.addStudent(65);
+        obj.addStudent(85);
+        obj.addStudent(55);
+
+        // Process students from top of stack
+        obj.processStudents();
+    }
+}
+```
+
+### Output
+
+```text
+Student with 75.0% added.
+Student with 92.0% added.
+Student with 65.0% added.
+Student with 85.0% added.
+Student with 55.0% added.
+
+Processing Students (LIFO):
+Percentage: 55.0%  Scholarship: ₹0
+Percentage: 85.0%  Scholarship: ₹15000
+Percentage: 65.0%  Scholarship: ₹5000
+Percentage: 92.0%  Scholarship: ₹20000
+Percentage: 75.0%  Scholarship: ₹10000
+```
+
+### Important Stack concept
+
+Students are added:
+
+```text
+75 → 92 → 65 → 85 → 55
+```
+
+The **last student added is processed first**:
+
+```text
+55 → 85 → 65 → 92 → 75
+```
+
+That's **LIFO — Last In, First Out**.
+
+### Scholarship logic
+
+```text
+≥ 90 → ₹20,000
+≥ 80 → ₹15,000
+≥ 70 → ₹10,000
+≥ 60 → ₹5,000
+< 60 → ₹0
+```
+
+The important Stack methods here are:
+
+```java
+students.push(percentage);  // Add
+students.pop();             // Remove/process top
+students.empty();           // Check if empty
+```
