@@ -1,0 +1,132 @@
+```java
+import java.util.Stack;
+
+public class ParkingSystem {
+
+    Stack<String> cars = new Stack<>();
+
+    // Maximum parking capacity
+    int capacity = 5;
+
+    // Method to add car
+    void addCar(String car) {
+
+        if (cars.size() < capacity) {
+            cars.push(car);
+            System.out.println(car + " parked successfully.");
+        }
+        else {
+            System.out.println("Parking is full. " + car + " cannot enter.");
+        }
+    }
+
+    // Method to remove last parked car
+    void removeCar() {
+
+        if (!cars.empty()) {
+            String car = cars.pop();
+            System.out.println(car + " has left the parking.");
+        }
+        else {
+            System.out.println("Parking is empty.");
+        }
+    }
+
+    // Method to display remaining cars
+    void displayCars() {
+
+        System.out.println("\nCars in parking:");
+
+        for (String car : cars) {
+            System.out.println(car);
+        }
+    }
+
+    // Method to calculate parking charge
+    int calculateCharge(int hours) {
+
+        if (hours <= 2) {
+            return 50;
+        }
+        else {
+            return 50 + ((hours - 2) * 20);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        ParkingSystem obj = new ParkingSystem();
+
+        // Adding cars
+        obj.addCar("Car 1");
+        obj.addCar("Car 2");
+        obj.addCar("Car 3");
+        obj.addCar("Car 4");
+        obj.addCar("Car 5");
+
+        // Parking is full
+        obj.addCar("Car 6");
+
+        // Remove last parked car
+        obj.removeCar();
+
+        // Display remaining cars
+        obj.displayCars();
+
+        // Calculate parking charges
+        int hours = 5;
+
+        System.out.println("\nParking Hours: " + hours);
+        System.out.println("Parking Charge: ₹" + obj.calculateCharge(hours));
+    }
+}
+```
+
+### Output
+
+```text
+Car 1 parked successfully.
+Car 2 parked successfully.
+Car 3 parked successfully.
+Car 4 parked successfully.
+Car 5 parked successfully.
+Parking is full. Car 6 cannot enter.
+
+Car 5 has left the parking.
+
+Cars in parking:
+Car 1
+Car 2
+Car 3
+Car 4
+
+Parking Hours: 5
+Parking Charge: ₹110
+```
+
+### Remember the Stack methods
+
+```text
+push()   → Add car
+pop()    → Remove last parked car
+size()   → Check number of cars
+empty()  → Check if parking is empty
+```
+
+### Parking charge logic
+
+```text
+First 2 hours → ₹50
+
+After 2 hours:
+Each extra hour → ₹20
+```
+
+For **5 hours**:
+
+```text
+₹50 + (3 × ₹20)
+= ₹110
+```
+
+So the **last parked car leaves first**, because this is a **Stack (LIFO)**.
